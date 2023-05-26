@@ -11,3 +11,26 @@ c.	Round Robin jika diketahui Quantum = 2
 2.	Dalam penjadwalan proses terdapat tiga macam penjadwalan, sebutkan, dan jelaskan disertai gambar!
 3.	Sumber daya apa yang digunakan saat thread dibuat? Bagaimana mereka berbeda dari yang digunakan ketika suatu proses dibuat?
 4.	Output apa yang akan ditampilkan pada LINE A? Jelaskan!
+
+#include <sys/types.h>
+#include <stdio.h>
+#include <unistd.h>
+
+int value = 5;\
+
+int main()
+{
+pid_t pid;
+    
+   pid = fork();
+        
+   if (pid == 0) { /*child process*/
+      value += 15;
+      return 0;
+      }
+      else if (pid >0){ /* parent process */
+        wait(NULL);
+        printf("PARENT : value = %d",value);
+        return 0;
+      }
+} 
